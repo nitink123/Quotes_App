@@ -9,7 +9,7 @@ import retrofit2.http.GET
 
 interface RetroFit {
 
-    @GET("$BASE_URL quotes")
+    @GET("${BASE_URL}quotes")
     suspend fun getQuotes() : Response<List<SaveQuotes>>
 
 

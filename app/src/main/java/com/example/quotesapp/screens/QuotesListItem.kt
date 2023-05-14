@@ -2,6 +2,7 @@ package com.example.quotesapp.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -12,17 +13,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.quotesapp.models.SaveQuotes
 
-@Preview
+
 @Composable
-fun QuotesListItem() {
+fun QuotesListItem(value : SaveQuotes,onclick : (value : SaveQuotes)->Unit) {
     Card(elevation = 4.dp,
         modifier = Modifier.padding(8.dp)
+            .clickable { onclick(value) }
       ) {
 
         Row(modifier = Modifier.padding(16.dp)) {
@@ -41,14 +42,14 @@ fun QuotesListItem() {
             Column(
                 modifier = Modifier.weight(1f)
             ) {
-                Text(text = "nitin can do everyThing and win every war",  fontWeight = FontWeight.Bold,style = MaterialTheme.typography.body2, modifier = Modifier.padding(0.dp,0.dp,0.dp,8.dp))
+                Text(text = value.text,  fontWeight = FontWeight.Bold,style = MaterialTheme.typography.body2, modifier = Modifier.padding(bottom = 8.dp))
                 Box(modifier = Modifier
                     .background(Color.Gray)
                     .fillMaxWidth(.4f)
                     .height(1.dp))
 
 
-                Text(text = "nitin",style = MaterialTheme.typography.body2, fontWeight = FontWeight.Thin, modifier = Modifier.padding(top = 4.dp))
+                Text(text = value.author,style = MaterialTheme.typography.body2, fontWeight = FontWeight.Thin, modifier = Modifier.padding(top = 4.dp))
             }
 
         }

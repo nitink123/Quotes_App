@@ -17,10 +17,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.quotesapp.models.SaveQuotes
 
-@Preview
+
 @Composable
-fun QuotesListItemDetail(){
+fun QuotesListItemDetail(value : SaveQuotes){
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -49,12 +50,12 @@ fun QuotesListItemDetail(){
                         .rotate(180f)
                         .background(Color.Black)
                 )
-                Text(text = "nitin is great nitin is great nitin is great",
+                Text(text = value.text,
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                Text(text = "nitin is great",
+                Text(text = value.author,
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Thin
                 )
